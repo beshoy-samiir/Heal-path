@@ -1,0 +1,27 @@
+<div class="container">
+    <h2 style="font-size: 26px;">Please Add Your Days Off</h2>
+    <form [formGroup]="daysOffForm" (ngSubmit)="setDay()">
+        <div>
+            <label>Select Day: </label>
+
+            <select formControlName="day" class="time-settings">
+
+                <option value="Sunday">Sunday </option>
+                <option value="Monday">Monday </option>
+                <option value="Tuesday">Tuesday </option>
+                <option value="Wednesday">Wednesday </option>
+                <option value="Thursday">Thursday </option>
+                <option value="Friday">Friday </option>
+                <option value="Saturday">Saturday </option>
+
+            </select>
+            <br />
+            <span *ngIf="
+        daysOffForm.controls['day'].hasError('required') &&
+        daysOffForm.controls['day'].touched" class="error">Day is required</span>
+        </div>
+        <button [disabled]="daysOffForm.invalid" class="btn" type="submit">Save Day</button>
+
+    </form>
+    <h3 class="mess" *ngIf="res">{{res.message}}</h3>
+</div>

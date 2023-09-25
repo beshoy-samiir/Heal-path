@@ -1,0 +1,71 @@
+<h3 style="text-align: center;">Edit Patient Details</h3>
+<form *ngIf="!isLoading" class="PatientDetailsForm" [formGroup]="PatientDetailsForm"
+    (ngSubmit)="HandleEditPatientDetails($event.submitter.id)">
+    <div class="inputs">
+        <div class="wrapper">
+            <span>Patient Name</span>
+            <input id='PatientNameEdit' type="text" placeholder="Enter Patient Name" class="input"
+                formControlName="PatientNameEdit" autocomplete="off">
+        </div>
+
+        <div class="wrapper">
+            <span>Phone Number</span>
+            <input id='PhoneNumberEdit' type="text" placeholder="Enter Phone Number" class="input"
+                formControlName="PhoneNumberEdit" autocomplete="off" maxlength="11">
+
+        </div>
+
+        <div class="wrapper">
+            <span>Height</span>
+            <input id='HeightEdit' type="text" placeholder="Enter Height in cm" class="input"
+                formControlName="HeightEdit" autocomplete="off" maxlength="3">
+
+        </div>
+
+
+
+        <div class="wrapper">
+            <span>Gender</span>
+            <div class="dropDownContainer">
+                <input type="text" placeholder="Select Gender" class="input disabled GenderEdit" autocomplete="off"
+                    [value]="this.PatientDetailsForm.controls['GenderEdit'].getRawValue()">
+                <button (click)="ToggleDropDownPatientDetails()" class="openIcon">
+                    <svg width="25" height="25" fill="none" stroke="#000000" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                </button>
+                <div class="vertical-menu-opened" id="dropDownEditPatient">
+                    <a (click)="setSelectedPatientDetails(gender)" *ngFor="let gender of this.Genders">{{gender}}</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="wrapper">
+            <span>Birthdate</span>
+            <div class="ParentBirthDate">
+
+                <input [max]="this.currentDate" (dateInput)="onDate($event)" class="input disabled date" matInput
+                    [matDatepicker]="picker1" autocomplete="off" placeholder="Select Birthdate"
+                    formControlName="BirthdateEdit">
+                <mat-datepicker-toggle matSuffix [for]="picker1" class="iconDate"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <button class="btnSubmitEditPatient" id="submitEditPatient" [disabled]="PatientDetailsForm.invalid">Edit Patient
+        Details</button>
+
+</form>

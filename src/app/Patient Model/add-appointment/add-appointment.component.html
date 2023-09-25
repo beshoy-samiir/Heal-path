@@ -1,0 +1,63 @@
+<div class="cont-form">
+    <svg (click)="exit()" class="svg-exit" viewBox="0 0 1024 1024" fill="#000000" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M332 663.2c-9.6 9.6-9.6 25.6 0 35.2s25.6 9.6 35.2 0l349.6-356c9.6-9.6 9.6-25.6 0-35.2s-25.6-9.6-35.2 0L332 663.2z"
+                fill=""></path>
+            <path
+                d="M681.6 698.4c9.6 9.6 25.6 9.6 35.2 0s9.6-25.6 0-35.2L367.2 307.2c-9.6-9.6-25.6-9.6-35.2 0s-9.6 25.6 0 35.2l349.6 356z"
+                fill=""></path>
+            <path
+                d="M516.8 1014.4c-277.6 0-503.2-225.6-503.2-503.2S239.2 7.2 516.8 7.2s503.2 225.6 503.2 503.2-225.6 504-503.2 504z m0-959.2c-251.2 0-455.2 204.8-455.2 456s204 455.2 455.2 455.2 455.2-204 455.2-455.2-204-456-455.2-456z"
+                fill=""></path>
+        </g>
+    </svg>
+    <h3>Add Appointment</h3>
+    <form class="form">
+        <div class="input-cont">
+            <select (click)="onSelectDoc($event)">
+                <option selected disabled>Choose Doctor</option>
+
+                <option *ngFor="let doc of doctors" [value]="doc._id">{{doc.name}}</option>
+
+            </select>
+        </div>
+        <!-- <div class="input-cont">
+            <select *ngIf="docID" (click)="onSelectDay($event)">
+                <option selected disabled>Choose Day</option>
+
+                <option *ngFor="let day of uniqueDays" [value]="day.day">{{day.day}}</option>
+            </select>
+            <h2 style="font-size: 16px;" *ngIf="formatDate">{{formatDate}}</h2>
+        </div> -->
+        <div class="input-cont" *ngIf="docID">
+            <input type="date" [min]="todayDate()" (change)="getDayyy($event)">
+        </div>
+
+
+        <div class="input-cont" *ngIf="workhours">
+            <select (click)="onSelectTime($event)">
+                <option *ngIf="workhours.length==0" [value]="null" selected disabled>No Appointments Avaliable</option>
+                <option *ngIf="workhours.length>0" [value]="null" selected disabled>Choose Time</option>
+
+                <optgroup *ngFor="let hour of workhours ">
+                    <option *ngFor="let h of hour.meetingTimes" [value]="h.startTime">{{h.startTime
+                        +' '+'To '+h.endTime}}</option>
+                </optgroup>
+
+
+            </select>
+        </div>
+
+
+
+        <div style="text-align: center; width: 100%;"> <button [disabled]="!appoTime" class="btn-form"
+                (click)="onSubmit()">Save
+                Appointment</button>
+            <h3 style="color: red;" *ngIf="errMess">{{errMess.data}}</h3>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+<div class="Content">
+    <div class="box-form">
+        <div class="left">
+            <!-- <div class="img"></div> -->
+            <img src="assets/2.png" alt="">
+        </div>
+
+        <div class="right">
+            <h3>Login Into Account</h3>
+            <h3 class="error" *ngIf="errmessage">{{errmessage.data}}</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+                <div class="inputs">
+                    <input type="text" formControlName="PatientName" placeholder="Name">
+                    <br />
+                    <span *ngIf="
+                            loginForm.controls['PatientName'].hasError('required') &&
+                            loginForm.controls['PatientName'].touched" class="error">*Name is required
+                    </span>
+
+
+                    <input type="phoneNumber" placeholder="Phone Number" formControlName="PhoneNumber">
+                    <span *ngIf="
+                                        loginForm.controls['PhoneNumber'].hasError('required') &&
+                                        loginForm.controls['PhoneNumber'].touched" class="error">*Phone Number is
+                        required
+                    </span>
+                </div>
+                <br />
+                <!-- <button [disabled]="loginForm.invalid">Login</button> -->
+                <button class="btnSubmit" [disabled]="loginForm.invalid">Login</button>
+                <br />
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>

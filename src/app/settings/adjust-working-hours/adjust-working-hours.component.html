@@ -1,0 +1,46 @@
+<div class="container">
+
+    <h2>Add Working Hours</h2>
+
+    <form [formGroup]="adjustForm" (ngSubmit)="setWorkingHours()">
+
+        <div class="day">
+            <label>Select Day</label>
+            <select formControlName="day" class="input">
+                <option value="Sunday">Sunday </option>
+                <option value="Monday">Monday </option>
+                <option value="Tuesday">Tuesday </option>
+                <option value="Wednesday">Wednesday </option>
+                <option value="Thursday">Thursday </option>
+                <option value="Friday">Friday </option>
+                <option value="Saturday">Saturday </option>
+            </select>
+
+            <span *ngIf="
+                adjustForm.controls['day'].hasError('required') &&
+                adjustForm.controls['day'].touched" class="error">Day is required</span>
+        </div>
+
+        <div class="day">
+            <label>StartTime</label>
+            <input class="input" formControlName="startTime" type="time" />
+            <span *ngIf="
+                        adjustForm.controls['startTime'].hasError('required') &&
+                        adjustForm.controls['startTime'].touched" class="error">Start Time is required</span>
+
+        </div>
+
+        <div class="day">
+            <label>To Time</label>
+            <input class="input" formControlName="endTime" type="time" />
+            <span *ngIf="
+                        adjustForm.controls['endTime'].hasError('required') &&
+                        adjustForm.controls['endTime'].touched" class="error">To Time is required</span>
+        </div>
+
+        <button [disabled]="adjustForm.invalid" class="btnSubmit">Confirm</button>
+        <h3 class="label" *ngIf="res">{{res.message}}</h3>
+    </form>
+
+
+</div>

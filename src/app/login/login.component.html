@@ -1,0 +1,43 @@
+<div class="Content">
+      <div class="box-form">
+            <div class="left">
+                  <!-- <div class="img"></div> -->
+                  <img src="assets/2.png" alt="">
+            </div>
+
+
+            <div class="right">
+                  <h3>Login Into Account</h3>
+                  <h3 class="error" *ngIf="errmessage">{{errmessage.data}}</h3>
+                  <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+                        <div class="inputs">
+                              <input type="email" formControlName="email" placeholder="Email Address">
+                              <br />
+                              <span *ngIf="
+                              loginForm.controls['email'].hasError('required') &&
+                              loginForm.controls['email'].touched" class="error">*Email is required
+                              </span>
+
+                              <span *ngIf="
+                              loginForm.controls['email'].hasError('email') &&
+                              loginForm.controls['email'].touched" class="error">*Enter Valid Email</span>
+
+                              <input type="password" placeholder="password" formControlName="password">
+                              <span *ngIf="
+                                          loginForm.controls['password'].hasError('required') &&
+                                          loginForm.controls['password'].touched" class="error">*Password is required
+                              </span>
+                        </div>
+                        <br />
+                        <!-- <button [disabled]="loginForm.invalid">Login</button> -->
+                        <button class="btnSubmit" [disabled]="loginForm.invalid">Login</button>
+                        <br />
+
+                  </form>
+
+            </div>
+
+      </div>
+
+
+</div>

@@ -1,0 +1,105 @@
+<div class="popUpLayerAddPatient" id="popUpLayer">
+
+    <div *ngIf="!this.ShowConfirmOrNot" class="popUpAddPateint" id="searchPageAddPatint">
+
+        <div class="exitAddPatinet" id="exitSearchAddPatinet" (click)="TogglePopUpClose()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+        </div>
+
+
+        <div class="publicErrorWrapper">
+            <h2>Add New Patient</h2>
+        </div>
+
+
+
+
+        <form class="searchInputAddPatient" [formGroup]="CreatePatientForm" (ngSubmit)="addNewPatient()">
+
+
+
+            <div class="inputs">
+
+
+                <div class="wrapper">
+                    <span>Patient Name</span>
+                    <input id='PatientName' type="text" placeholder="Enter Patient Name" class="input"
+                        formControlName="PatientName" autocomplete="off">
+                    <span class="error" id="PatientNameSpan">*{{ErrorMsg.PatientName}}</span>
+                </div>
+
+                <div class="wrapper">
+                    <span>Phone Number</span>
+                    <input id='PhoneNumber' type="text" placeholder="Enter Phone Number" class="input"
+                        formControlName="PhoneNumber" autocomplete="off" maxlength="11">
+                    <span class="error" id="PhoneNumberSpan">*{{ErrorMsg.PhoneNumber}}</span>
+                </div>
+
+                <div class="wrapper">
+                    <span>Height</span>
+                    <input id='Height' type="text" placeholder="Enter Height in cm" class="input"
+                        formControlName="Height" autocomplete="off" maxlength="3">
+                    <span class="error" id="HeightSpan">*{{ErrorMsg.Height}}</span>
+                </div>
+
+
+
+                <div class="wrapper">
+                    <span>Gender</span>
+                    <div class="dropDownContainer">
+                        <select class="input" formControlName="Gender" aria-placeholder="test">
+                            <option class="input" *ngFor="let gender of this.Genders" [value]="gender">{{gender}}
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <span class="error" id="GenderSpan">*{{ErrorMsg.Gender}}</span>
+                </div>
+
+                <div class="wrapper">
+                    <span>Birthdate</span>
+                    <div class="ParentBirthDate">
+
+                        <input [max]="this.currentDate" (dateInput)="onDate($event)" class="input disabled date"
+                            matInput [matDatepicker]="picker1" autocomplete="off" placeholder="Select Birthdate">
+                        <mat-datepicker-toggle matSuffix [for]="picker1" class="iconDate"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+
+                    </div>
+
+                    <span class="error" id="BirthdateSpan">*{{ErrorMsg.Birthdate}}</span>
+                </div>
+
+
+
+
+            </div>
+
+            <button class="btnSubmitAddPatient" type="submit">Create New Patient</button>
+
+        </form>
+    </div>
+
+
+    <div *ngIf="ShowConfirmOrNot" class="confirmMsg" id="searchPageAddPatint">
+
+        <svg width="150" height="150" fill="none" stroke="#FFC600" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+        </svg>
+
+
+        <div class="SuccessMsg">
+            <h2>Patient Successfully Created</h2>
+        </div>
+
+
+
+    </div>
+</div>

@@ -1,0 +1,104 @@
+.container {
+    min-height: 60vh;
+    min-width: 60vh;
+    /* min-width: 60vh; */
+    /* padding: 4rem; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+label {
+    font-size: 1.8rem;
+}
+
+.time-settings {
+    width: 40%;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.btn {
+    background-color: black;
+    border: solid black 2px;
+    border-radius: 40px;
+    transition: 0.4s all;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s all;
+    font-size: 1.2rem;
+    padding: 6px 30px;
+    font-family: fontMedium;
+    margin-top: 16px;
+    border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.error {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 90%;
+    color: red;
+    transition: 0.4s all;
+}
+
+
+
+.btn:hover {
+    background-color: #ffbb55;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: solid rgba(0, 0, 0, 0.1) 2px;
+}
+
+
+
+h2 {
+    font-size: 2rem;
+    align-self: center;
+    letter-spacing: 2px;
+}
+
+
+.startTime,
+.endTime {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TimeText {
+    /* letter-spacing: 2px; */
+    font-size: 1.5rem;
+    margin: 6px;
+    color: #FFC600;
+}
+
+
+.select-time {
+    width: 75%;
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+form {
+    width: 100%;
+}
